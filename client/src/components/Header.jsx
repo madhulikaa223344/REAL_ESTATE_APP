@@ -1,5 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 
 export default function Header() {
   return (
@@ -19,8 +21,8 @@ export default function Header() {
           type='text'
           placeholder='Search...'
           className='bg-transparent focus:outline-none w-24 sm:w-64'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          // value={searchTerm}
+          // onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button>
           <FaSearch className='text-slate-600' />
@@ -38,7 +40,7 @@ export default function Header() {
           </li>
         </Link>
         <Link to='/profile'>
-          {currentUser ? (
+          {/* {currentUser ? (
             <img
               className='rounded-full h-7 w-7 object-cover'
               src={currentUser.avatar}
@@ -46,7 +48,7 @@ export default function Header() {
             />
           ) : (
             <li className=' text-slate-700 hover:underline'> Sign in</li>
-          )}
+          )} */}
         </Link>
       </ul>
     </div>
