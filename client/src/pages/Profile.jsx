@@ -21,7 +21,7 @@ export default function Profile() {
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
-  console.log(currentUser);
+  //console.log(currentUser);
 
   useEffect(() => {
     if (file) {
@@ -73,7 +73,7 @@ export default function Profile() {
       const data = await res.json();
       
       console.log(data,"data")
-      if (!data?.success) {
+      if (!data) {
         dispatch(updateUserFailure(data.message));
         return;
       }
@@ -81,8 +81,7 @@ export default function Profile() {
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
     } catch (error) {
-      console.log(error,"data_Adi");
-   // console.log(error)
+      
       dispatch(updateUserFailure(error.message));
     }
   };
@@ -130,7 +129,7 @@ export default function Profile() {
       </h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input onChange={(e)=>setfile(e.target.files[0])} type="file" ref={fileRef} hidden accept="image/*"/>
+        <input onChange={(e)=>{setFileUploadError(false),setfile(e.target.files[0])}} type="file" ref={fileRef} hidden accept="image/*"/>
         <img onClick={()=>fileRef.current.click()} src={ formData.avatar||currentUser.avatar} alt="profile" className="rounded-full
          h-24 w-24 object-cover cursor-pointer self-center mt-2"/>
          <p className='text-sm self-center'>
