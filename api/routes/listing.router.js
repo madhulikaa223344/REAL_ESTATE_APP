@@ -5,7 +5,7 @@ import { verifyToken } from "../utills/verifyUser";
 
 const router=express.Router();
 
-router.post("/create", verifyToken,
+router.post("/create-listing", verifyToken,
 createListing)
 
 export default router;
