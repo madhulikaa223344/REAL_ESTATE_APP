@@ -6,7 +6,7 @@ const listingSchema= new mongoose.Schema(
             type:String,
             required:true,
             },
-            decription:{
+            description:{
                 type:String,
                 required:true,
             },
@@ -58,5 +58,5 @@ const listingSchema= new mongoose.Schema(
     },{timestamps:true}
 )
 
-const Listing=mongoose.model('Listing',listingSchema);
+const Listing = mongoose.model('Listing',listingSchema);
 export default Listing;
