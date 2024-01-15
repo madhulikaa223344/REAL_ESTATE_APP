@@ -3,12 +3,12 @@ import errorHandler from "../utills/error.js";
 
 export const createListing =async(req, res, next) => {
 try {
-    console.log("first")
+    //console.log("first")
     const listing = await Listing.create(req.body);
-    console.log(listing,"controller");
+    //console.log(listing,"controller");
     return res.status(201).json(listing);   
 } catch (error) {
-    console.log("listing");
+    //console.log("listing");
     next(error);  
 }
 }
@@ -63,6 +63,7 @@ export const updateListing = async (req, res, next) => {
   };
 
   export const getListings = async (req, res) => {
+   
     try {
       const limit=parseInt(req.params.limit)||9;
       const startIndex=parseInt(req.params.startIndex)||0;
@@ -83,7 +84,7 @@ export const updateListing = async (req, res, next) => {
       if (type === undefined || type === 'all') {
         type = { $in: ['sale', 'rent'] };
       }
-      const searchTerm=req.query.searchTerm||'all';
+      const searchTerm=req.query.searchTerm||'';
       const sort =req.query.sort||"createdAt";
       const order=req.query.order||"desc";
       const listings = await Listing.find({
@@ -96,10 +97,11 @@ export const updateListing = async (req, res, next) => {
         .sort({ [sort]: order })
         .limit(limit)
         .skip(startIndex);
-  
+        console.log(listings ,"listings");
       return res.status(200).json(listings);
   
     } catch (error) {
+      console.log(error);
       next(error)
       
     }
