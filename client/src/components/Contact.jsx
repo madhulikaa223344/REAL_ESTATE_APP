@@ -23,7 +23,8 @@ import { Link } from 'react-router-dom';
         fetchLandlord();
     },[listing.userRef])
 
-    const onChange=()=>{
+    const onChange=(e)=>{
+        setMessage(e.target.value);
 
     }
   return (
@@ -33,7 +34,7 @@ import { Link } from 'react-router-dom';
             <p>
                 Contact <span className="font-semibold">{landlord.username}</span> for <span className="font-semibold">{listing.name.toLowerCase()}</span>
             </p>
-            <textarea name="message" id="message" row="2" value={message} onChange={onChange} placeholder="Enter your message here...." className='w-full border p-3 rounded-lg'></textarea>
+            <textarea name="message" id="message" row="2" value={message} onChange={(e)=>onChange(e)} placeholder="Enter your message here...." className='w-full border p-3 rounded-lg'></textarea>
             <Link to={`mailto:${landlord.email}?subject=Regarding ${listing.name}&body=${message}`}
         className="bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95">
                 Send Message
