@@ -18,14 +18,14 @@ export const updateUser = async (req, res, next) => {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
-          $set: {
+          $set: {//if data is change then change the else will ignore
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
             avatar: req.body.avatar,
           },
         },
-        { new: true }
+        { new: true }// save the new information and then return the new response if not added then we will get the previous response
       );
    
       const { password, ...rest } = updatedUser._doc;

@@ -21,9 +21,9 @@ mongoose
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json());//allow json as input on server
 
-app.use(cookieParser());
+app.use(cookieParser());//to get the cookie form the server
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');

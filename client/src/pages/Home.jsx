@@ -73,7 +73,7 @@ export default function Home() {
       </div>
 
       {/* swiper */}
-      <Swiper navigation>
+      <Swiper navigation className='mx-20'>
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
